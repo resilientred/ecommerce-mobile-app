@@ -1,0 +1,13 @@
+# Created by builder
+dist
+
+# Node
+logs
+*.log
+npm-debug.log*
+node_modules
+.npm
+
+temp
+plugins
+tools
