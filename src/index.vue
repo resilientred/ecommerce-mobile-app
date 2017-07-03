@@ -2,15 +2,20 @@
   <div class="main">
     <app-header></app-header>
     <app-subheader></app-subheader>
-    <scroller class="scroller">
-      <ul id="categories">
+    <scroller>
+      <div id="categories">
         <toggle-categories
           class="category"
           v-for="cat in categoryList.categories"
           :model="cat"
           :key="cat.id">
         </toggle-categories>
-      </ul>
+      </div>
+
+      <!-- <div class="text-center">
+        <div @click="toggle" class="click-text">Click me!</div>
+      </div>
+      <text v-if="show" class="text">Displayed!</text> -->
     </scroller>
   </div>
 </template>
@@ -19,9 +24,10 @@
   .title { padding-top:40px; padding-bottom: 40px; font-size: 48px; }
   .logo { width: 360px; height: 156px; }
   .desc { padding-top: 20px; color:#888; font-size: 24px; }
-  .categories-list { margin: 10px; width: 200px; height: 350px; background-color: #FFFFFF; box-shadow: 3px 3px 5px #ECECEC; }
+  .categories-list { width: 200px; height: 350px; background-color: #FFFFFF; box-shadow: 3px 3px 5px #ECECEC; }
   .categories .category { border-bottom: 1px solid #000000; }
   .text-center { text-align: center; }
+  .click-text { padding: 20px !important; margin-bottom: 10px !important; }
 </style>
 
 <script>
@@ -29,14 +35,30 @@
   import AppSubHeader from './components/app-subheader.vue'
   import ToggleCategories from './components/toggle-categories.vue'
 
+  Vue.component('toggle-categories', ToggleCategories)
+
   // categories data
   var cat_content = {
     categories: [
       {
         name: 'Air Conditioner',
         children: [
-          { name: 'Split AC' },
-          { name: 'Window AC' }
+          {
+            name: 'Split AC',
+            children: [
+              {
+                name: 'Split AC',
+                children: [
+                  { name: 'test sub' }
+                ]
+              },
+            ]
+          },
+          { name: 'Window AC',
+            children: [
+              { name: 'test sub' }
+            ]
+          }
         ]
       },
       {
@@ -52,6 +74,9 @@
           { name: 'CRT' },
           { name: 'LCD' }
         ]
+      },
+      {
+        name: 'Test'
       }
     ]
   }
@@ -61,25 +86,18 @@
   export default {
     components: { 
       'app-header': AppHeader,
-      'app-subheader': AppSubHeader,
-      'toggle-categories': ToggleCategories
+      'app-subheader': AppSubHeader
     },
-    data: {
-      logoUrl: 'http://img1.vued.vanthink.cn/vued08aa73a9ab65dcbd360ec54659ada97c.png',
-      target: 'World',
-      items: [
-        { message: 'Lorem' },
-        { message: 'Dolor' },
-        { message: 'Sit' },
-        { message: 'Amet' },
-        { message: 'Portico' }
-      ],
-      categoryList: cat_content
+    data: function () {
+      return {
+        categoryList: cat_content,
+        show: false
+      }
     },
     methods: {
-      update: function (e) {
-        this.target = 'Weex'
-        console.log('target:', this.target)
+      toggle: function () {
+        console.log('Clicked!!!');
+        this.show = !this.show
       }
     }
   }

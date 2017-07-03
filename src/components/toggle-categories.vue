@@ -1,28 +1,26 @@
 <template>
-  <li>
-    <div
-      :class="{bold: isFolder}"
+  <div>
+    <text
+      class="category-name"
       @click="toggle">
       {{model.name}}
-      <span v-if="isFolder">[{{open ? '-' : '+'}}]</span>
-    </div>
-    <div v-if="open">askkvdjadkvadjvdkjv</div>
-    <ul v-if="open">
+      <span class="toggle-icon" v-if="isFolder">[{{isOpen ? '-' : '+'}}]</span>
+    </text>
+    <!-- <text class="text" v-if="isOpen">Displayed</text> -->
+    <!-- <div v-if="isOpen"> -->
+    <div v-if="isOpen">
       <toggle-categories
         class="category"
-        v-for="model in model.children"
-        :model="model"
-        :key="model.id">
+        v-for="sc in model.children"
+        :model="sc"
+        :key="sc.id">
       </toggle-categories>
-    </ul>
-  </li>
+    </div>
+    <!-- </div> -->
+  </div>
 </template>
 
-<style>
-  body {
-    font-family: Menlo, Consolas, monospace;
-    color: #444;
-  }
+<style scoped>
   .item {
     cursor: pointer;
   }
@@ -33,6 +31,14 @@
     padding-left: 1em;
     line-height: 1.5em;
     list-style-type: none;
+  }
+  .category-name {
+    display: flex;
+    padding: 10px;
+  }
+  .toggle-icon {
+    padding: 13px 5px;
+    float: right;
   }
 </style>
 
@@ -45,28 +51,34 @@
     data: function () {
       // console.log('Open => '+open);
       return {
-        open: false
+        isOpen: false
       }
     },
     computed: {
       isFolder: function () {
-        console.log('Children => '+this.model.children);
+        // console.log('Children => '+this.model.children.name);
         if(this.model.children) {
           console.log('Length => '+this.model.children.length);
         }
-        return this.model.children &&
-          this.model.children.length
+        if(this.model.children && (this.model.children.length > 0)) {
+          return true
+        } else {
+          return false
+        }
+        // return this.model.children && this.model.children.length
       }
     },
     methods: {
-      toggle: function (event) {
-        console.log(event);
-        console.log('Outside => '+this.isFolder);
-        console.log('Outside open => '+this.open);
+      toggle: function () {
+        // console.log('Outside => '+this.isFolder);
+        // console.log('Outside open => '+this.open);
         if (this.isFolder) {
-          console.log('Inside => '+this.isFolder);
-          console.log('Inside open => '+this.open);
-          this.open = !this.open
+          // console.log('Inside => '+this.isFolder);
+          // console.log('Inside Before open => '+this.open);
+          // this.open = !this.open
+          this.isOpen = !this.isOpen
+          console.log('Inside After is open => '+this.isOpen);
+          // return this.open
         }
       }
     }
