@@ -2,7 +2,7 @@
   <div class="main">
     <app-header></app-header>
     <app-subheader></app-subheader>
-    <scroller>
+    <!-- <scroller> -->
       <!-- <div id="categories">
         <toggle-categories
           class="category"
@@ -11,7 +11,18 @@
           :key="cat.id">
         </toggle-categories>
       </div> -->
-    </scroller>
+      <!-- <router-view></router-view> -->
+    <!-- </scroller> -->
+    <ul>
+      <li>
+        <v-link href="/">Home</v-link>
+      </li>
+      <li>
+        <v-link href="/confirm">Order confirmation</v-link>
+      </li>
+    </ul>
+
+    <slot></slot>
   </div>
 </template>
 
@@ -34,6 +45,7 @@
   import AppHeader from './components/app-header.vue'
   import AppSubHeader from './components/app-subheader.vue'
   import ToggleCategories from './components/toggle-categories.vue'
+  import VLink from './components/VLink.vue'
 
   Vue.component('toggle-categories', ToggleCategories)
 
@@ -86,7 +98,8 @@
   export default {
     components: { 
       'app-header': AppHeader,
-      'app-subheader': AppSubHeader
+      'app-subheader': AppSubHeader,
+      'v-link': VLink
     },
     data: function () {
       return {

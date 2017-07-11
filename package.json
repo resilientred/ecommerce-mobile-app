@@ -1,7 +1,7 @@
 {
-  "name": "xxx",
+  "name": "ecommerce-mobile-app",
   "version": "1.0.0",
-  "description": "a weex project",
+  "description": "Ecommerce mobile app",
   "main": "index.js",
   "scripts": {
     "build": "webpack",

@@ -2,7 +2,12 @@
   <div class="order-confirmation-details">
     <app-header></app-header>
     <app-subheader></app-subheader>
-    <scroller class="scroller">
+    <ul>
+      <li>
+        <v-link href="/">Home</v-link>
+      </li>
+    </ul>
+    <!-- <scroller class="scroller"> -->
       <div class="order-confirmed">
         <div style="width: 50px;"></div>
         <div class="order-number">
@@ -18,7 +23,7 @@
         <text class="text-red font-bold">SHOP MORE</text>
         <image class="forward-icon" src="https://s2.postimg.org/4u4kccet5/forward.png"></image>
       </div>
-    </scroller>
+    <!-- </scroller> -->
   </div>
 </template>
 
@@ -77,11 +82,13 @@
   import AppHeader from '../components/app-header.vue'
   import AppSubHeader from '../components/app-subheader.vue'
   import OrderSummary from '../components/order-summary.vue'
+  import VLink from '../components/VLink.vue'
   export default {
     components: {
       'app-header': AppHeader,
       'app-subheader': AppSubHeader,
-      'order-summary': OrderSummary
+      'order-summary': OrderSummary,
+      'v-link': VLink
     },
     data: function() {
       return {
