@@ -4,10 +4,8 @@
       class="category-name"
       @click="toggle">
       {{model.name}}
-      <span class="toggle-icon" v-if="isFolder">[{{isOpen ? '-' : '+'}}]</span>
+      <span v-if="isFolder">[{{isOpen ? '-' : '+'}}]</span>
     </text>
-    <!-- <text class="text" v-if="isOpen">Displayed</text> -->
-    <!-- <div v-if="isOpen"> -->
     <div v-if="isOpen">
       <toggle-categories
         class="category"
@@ -16,11 +14,14 @@
         :key="sc.id">
       </toggle-categories>
     </div>
-    <!-- </div> -->
   </div>
 </template>
 
-<style scoped>
+<style>
+  body {
+    font-family: Menlo, Consolas, monospace;
+    color: #444;
+  }
   .item {
     cursor: pointer;
   }
@@ -35,10 +36,6 @@
   .category-name {
     display: flex;
     padding: 10px;
-  }
-  .toggle-icon {
-    padding: 13px 5px;
-    float: right;
   }
 </style>
 

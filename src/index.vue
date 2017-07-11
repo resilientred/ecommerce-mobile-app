@@ -3,19 +3,14 @@
     <app-header></app-header>
     <app-subheader></app-subheader>
     <scroller>
-      <div id="categories">
+      <!-- <div id="categories">
         <toggle-categories
           class="category"
           v-for="cat in categoryList.categories"
           :model="cat"
           :key="cat.id">
         </toggle-categories>
-      </div>
-
-      <!-- <div class="text-center">
-        <div @click="toggle" class="click-text">Click me!</div>
-      </div>
-      <text v-if="show" class="text">Displayed!</text> -->
+      </div> -->
     </scroller>
   </div>
 </template>
@@ -28,6 +23,11 @@
   .categories .category { border-bottom: 1px solid #000000; }
   .text-center { text-align: center; }
   .click-text { padding: 20px !important; margin-bottom: 10px !important; }
+  .text-large { font-size: 16px; }
+  .text-medium { font-size: 14px; }
+  .text-small { font-size: 12px; }
+  .text-uppercase { text-transform: capitalize; }
+  .text-red { color: #ec1c38; }
 </style>
 
 <script>
