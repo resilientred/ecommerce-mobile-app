@@ -25,7 +25,7 @@
 <style scoped>
 .order-details {
   background-color: #FFFFFF;
-  box-shadow: 10px 10px 5px rgb(0, 0, 0) !important;
+  box-shadow: 10px 10px 5px #cccccc !important;
   display: flex;
   flex-direction: column;
   padding: 30px;
