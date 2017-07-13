@@ -14,10 +14,14 @@ const app = new Vue({
   },
   computed: {
     ViewComponent: function() {
-      const matchingView = (routes[this.currentRoute] === '/') ? App : routes[this.currentRoute]
-      return matchingView
-        ? require('./src/views/' + matchingView + '.vue')
-        : require('./src/views/404.vue')
+      if (routes[this.currentRoute] === '/') {
+        return App
+      } else {
+        const matchingView = routes[this.currentRoute]
+        return matchingView
+          ? require('./src/views/' + matchingView + '.vue')
+          : require('./src/views/404.vue')
+      }
     }
   },
   render: function(h) {
